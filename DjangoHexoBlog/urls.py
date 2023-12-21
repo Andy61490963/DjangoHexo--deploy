@@ -1,0 +1,18 @@
+from django.contrib import admin
+from django.urls import path, include
+from django.shortcuts import redirect
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+    path('', lambda request: redirect('/Blog/', permanent=True)),
+    path('admin/', admin.site.urls),
+    path('Blog/', include('Blog.urls')),
+    path('searchapp/', include('searchapp.urls')),
+    path('account/', include('account.urls')),
+    path('mdeditor/', include('mdeditor.urls')),
+]
+
+if settings.DEBUG:
+    # static files (images, css, javascript, etc.)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

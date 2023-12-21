@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block archives %}
+{% with small_background=True %}
+
+<div class="container nopadding-x-md">
+    <div id="board">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-10 m-auto tag-center">
+                    {% for tag in tags %}
+                        <a href="{% url 'Taglist' tag.name %}" class="tag-link" style="font-size: {{ tag.font_size }}px;">
+                            {{ tag.name }}
+                        </a>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+.tag-link {
+    margin-right: 10px;
+}
+.tag-center {
+    text-align: center;
+}
+
+</style>
+
+{% endwith %}
+{% endblock %}
